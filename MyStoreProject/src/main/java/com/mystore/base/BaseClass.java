@@ -7,6 +7,9 @@ import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.testng.annotations.BeforeTest;
 
 import com.mystore.actiondriver.Action;
@@ -33,10 +36,16 @@ public class BaseClass {
 			
 		}	
 		}
+
+	
 	public static void launchApp() {
 		WebDriverManager.chromedriver().setup();
 		String browserName = prop.getProperty("browser");
-		
+		//String browserName = prop.getProperty("browser");
+		if (browserName.equalsIgnoreCase("Chrome")) {
+			WebDriverManager.chromedriver().setup();
+			driver = new ChromeDriver();
+		} 
 		Action action = new Action();
 		action.implicitWait(driver, 10);
 		action.pageLoadTimeOut(driver, 30);
