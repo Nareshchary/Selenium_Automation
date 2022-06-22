@@ -33,8 +33,12 @@ import com.mystore.base.BaseClass;
 		return action.isDisplayed(driver, myWishList);
 		
 			}
-	public void validateOrderHistory() {
-		action.isDisplayed(driver, orderHistory);
+	public boolean validateOrderHistory() {
+		return action.isDisplayed(driver, orderHistory);
+	}
+	public String getCurrURL() {
+		String homeCurrentURL = driver.getCurrentUrl();
+		return homeCurrentURL;
 	}
 
 }
